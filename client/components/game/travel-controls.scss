@@ -1,0 +1,53 @@
+.travel-controls-wrapper {
+  $width: 80vmin;
+  position: relative;
+  width: 0;
+  left: calc(100% - #{$width});
+
+  .current-action {
+    position: absolute;
+    z-index: 2;
+    left: 1vmin;
+    top: -2.5vmin;
+    transform: scale(0.6);
+  }
+
+  .warning {
+    font-size: 80%;
+    padding: 0 1vmin;
+  }
+
+  header {
+    position: absolute;
+    left: -2vmin;
+    right: -2vmin;
+    top: -2vmin;
+  }
+
+  button {
+    margin: 7vmin 0 0;
+  }
+
+  .estimated {
+    padding: 1vmin;
+    font-size: 50%;
+
+    .values {
+      color: $bright-text-color;
+    }
+  }
+
+  .travel-controls {
+    position: relative;
+    min-width: $width;
+    border: 2vmin solid;
+    background-image: url('../images/ui/bg_01_02_continuous_dark.png');
+    border-image: url('../images/ui/obj_08_full_border.png') 23;
+
+
+  .enemy-options {
+      display: flex;
+      margin: 0;
+    }
+  }
+}

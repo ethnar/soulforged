@@ -1,0 +1,456 @@
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+.help-text, .plot-text {
+  @include text-secondary();
+
+  .label {
+    color: $text-color;
+  }
+
+  &.disabled {
+    @include disabled();
+  }
+}
+
+.empty-list {
+  display: block;
+  text-align: center;
+  margin: 1.62vmin 0;
+
+  &:empty::before {
+    content: 'None';
+  }
+}
+
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+
+  .spacer {
+    width: 2vmin;
+  }
+}
+
+.item-properties {
+  text-align: left;
+
+  .integrity-icon {
+    @include integrity-icon();
+    width: 3.5vmin;
+    height: 3.5vmin;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .property {
+    &:not(.no-colon)::after {
+      content: ': ';
+    }
+    &.discreet {
+      color: $bright-text-color;
+    }
+    &.red {
+      color: $red;
+    }
+  }
+
+  .value {
+    color: $bright-text-color;
+
+    .positive {
+      color: $green;
+    }
+    .negative {
+      color: $red;
+    }
+  }
+  div.value {
+    padding-left: 5%;
+  }
+}
+
+.details {
+  font-size: 89%;
+  flex-grow: 1;
+
+  .label {
+    font-size: 80%;
+    padding-top: 0.81vmin;
+    display: flex;
+    overflow: hidden;
+
+    .icon-blocked,
+    .icon-blocking {
+      width: 5vmin;
+      height: 5vmin;
+      margin-right: 0.5vmin;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    .icon-blocked {
+      background-image: url('../images/ui/icons/war_t.png');
+    }
+
+    .icon-blocking {
+      background-image: url('../images/ui/icons/armor_t_no_bg.png');
+    }
+
+    &.nowrap {
+      white-space: nowrap;
+      @include overflow-shading();
+
+      > div {
+        width: 0;
+      }
+    }
+
+    .text {
+      flex-grow: 1;
+    }
+
+    .help-icon {
+      min-width: 7vmin;
+    }
+
+    .nowrap {
+      white-space: nowrap;
+      width: 0;
+    }
+  }
+  
+  .actions-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .action {
+    height: 10vmin;
+  }
+}
+.node-details {
+  .actions-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    flex-shrink: 9001;
+  }
+}
+.creature-short-display {
+  .avatar-icon {
+    .img {
+      border: 0.8vmin solid black;
+    }
+  }
+}
+.action-modal {
+  .number-select .number {
+    margin: 0 auto;
+  }
+}
+.centered {
+  display: flex;
+  margin-bottom: 8px;
+  justify-content: center;
+}
+//.centered .action, .centered button, .centered .button {
+//  display: block;
+//  margin: 0 auto 8px;
+//}
+.spacing-top {
+  margin-top: 14px;
+}
+
+.research-selection {
+  display: flex;
+
+  .research-material {
+    //width: 25vmin;
+    //margin: 0 2.5vmin 12px;
+
+    > * {
+      vertical-align: middle;
+    }
+  }
+}
+
+.list-item-with-props {
+  display: flex;
+  flex-grow: 1;
+  min-height: 14vmin;
+
+  .label {
+    margin-left: 1vmin;
+    text-align: left;
+  }
+
+  .main-icon {
+    display: flex;
+    position: relative;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .description {
+    margin-left: 1vmin;
+    text-align: left;
+  }
+}
+
+.skill-indicator {
+  display: flex;
+  height: 11.5vmin;
+  line-height: 10vmin;
+  position: relative;
+  margin-bottom: 0.3vmin;
+
+  .help-icon {
+    margin-top: 1.5vmin;
+    margin-right: 1.5vmin;
+  }
+
+  .skill-meter {
+    height: 13%;
+    width: 95%;
+    margin: 0 2.5%;
+    position: absolute;
+    top: 84%;
+    z-index: 3;
+
+    .background {
+      $border: 0.5vmin;
+      @include background-image-with-border('images/ui/strip_bg01_dark.png', 15, $border);
+      position: absolute;
+      top: -$border;
+      left: -$border;
+      right: -$border;
+      bottom: -$border;
+      padding: $border;
+      height: 100%;
+      box-sizing: content-box;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+
+    .meter-clip {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+
+      .meter-bar {
+        height: 100%;
+        background: url('../images/ui/strip_green_dark_padding_2.png');
+        background-repeat: repeat-x;
+
+        &.blue {
+          background-image: url('../images/ui/strip_blue_padding_2.png');
+        }
+      }
+
+    }
+
+    .meter-clip-highlight,
+    .meter-clip-missing {
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .meter-clip-missing {
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  .skill-name {
+    white-space: nowrap;
+    width: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    //color: $text-color-dark;
+    text-shadow: $text-shadow;
+    font-size: 90%;
+    line-height: 8vmin;
+    z-index: 4;
+    margin-left: 2%;
+  }
+
+  .skill-level {
+    width: 10vmin;
+    height: 10vmin;
+    min-width: 10vmin;
+    min-height: 10vmin;
+    text-align: center;
+    background-size: 100% 100%;
+    background-position:  center center;
+    background-repeat: no-repeat;
+    font-size: 75%;
+    z-index: 4;
+    line-height: 10.5vmin;
+
+    &.skill-level-0 { background-image: url('../images/ui/skill_frame_new_0.png'); }
+    &.skill-level-1 { background-image: url('../images/ui/skill_frame_new_1.png'); }
+    &.skill-level-2 { background-image: url('../images/ui/skill_frame_new_2.png'); }
+    &.skill-level-3 { background-image: url('../images/ui/skill_frame_new_3.png'); }
+    &.skill-level-4 { background-image: url('../images/ui/skill_frame_new_4.png'); }
+    &.skill-level-5 { background-image: url('../images/ui/skill_frame_new_5.png'); }
+    &.skill-level-6 { background-image: url('../images/ui/skill_frame_new_6.png'); }
+    &.skill-level-7 { background-image: url('../images/ui/skill_frame_new_7.png'); }
+    &.skill-level-8 { background-image: url('../images/ui/skill_frame_new_8.png'); }
+    &.skill-level-9 { background-image: url('../images/ui/skill_frame_new_9.png'); }
+    &.skill-level-L { background-image: url('../images/ui/skill_frame_new_10.png'); }
+  }
+}
+
+pre {
+  font-size: 60%;
+}
+
+.main-container-wrapper {
+  height: 100%;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &.travel-mode {
+    .main-status {
+      top: -50vh;
+      opacity: 0;
+    }
+    .secondary-status {
+      right: -15vh;
+      opacity: 0;
+    }
+    .game-chat {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .scrollable-contents {
+    padding-bottom: $bottom-bar-height;
+  }
+
+  .section-selector {
+    background: $main-background;
+    $buttons: 6;
+    $size: 100vw / 6;
+    min-height: $bottom-bar-height;
+    height: $bottom-bar-height;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    z-index: 500;
+
+    .toggle {
+      height: 100%;
+      width: $size;
+      font-size: $size / 2;
+      line-height: $bottom-bar-height;
+      text-align: center;
+      background: url('../images/ui/Plank_08.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      color: $bright-text-color;
+      text-shadow: $text-shadow;
+      position: relative;
+      @include interactable();
+
+      &.active {
+        filter: brightness(140%);
+        @include filter-fix();
+      }
+
+      @include icon-shadow();
+      &.highlight {
+        .icon {
+          filter: contrast(0) brightness(1.2) sepia(1) hue-rotate(18deg) saturate(9);
+          @include filter-fix();
+        }
+      }
+
+      &.location {
+        .icon, .shadow {
+          background-image: url('../images/icons8-home-100.png');
+        }
+      }
+      &.mobs {
+        .icon, .shadow {
+          background-image: url('../images/icons8-people-100.png');
+        }
+      }
+      &.inventory {
+        .icon, .shadow {
+          background-image: url('../images/icons8-drawstring-bag-100.png');
+        }
+      }
+      &.crafting {
+        .icon, .shadow {
+          background-image: url('../images/icons8-hammer-100.png');
+        }
+      }
+      &.stats {
+        .icon, .shadow {
+          background-image: url('../images/icons8-automation-filled-100.png');
+        }
+      }
+      &.chat {
+        .icon, .shadow {
+          background-image: url('../images/icons8-bulleted-list-100.png');
+        }
+      }
+    }
+  }
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.write-text {
+  textarea {
+    width: 100%;
+    font-size: 70%;
+    height: 50vh;
+  }
+}
+
+.export-window {
+  width: 100%;
+  min-height: 40vmin;
+
+  &.hidden {
+    position: absolute;
+    left: -999999vmax;
+  }
+}

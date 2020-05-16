@@ -1,0 +1,13 @@
+.player-inventory {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .inventory-wrapper {
+    overflow: auto;
+  }
+
+  header.secondary {
+    margin-bottom: 0;
+  }
+}

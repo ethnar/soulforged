@@ -1,0 +1,17 @@
+.modal {
+  .main > .main-icon:first-child {
+    float: left;
+    margin: 0 2vmin 1vmin 0;
+  }
+}
+
+.resource-list-item {
+  display: flex;
+  flex-grow: 1;
+}
+
+.node-resources-frame {
+  .actions-list {
+    display: flex;
+  }
+}

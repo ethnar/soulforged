@@ -1,0 +1,20 @@
+.node-events {
+  display: flex;
+  flex-direction: column;
+
+  .event-icon {
+    @include interactable();
+    margin-bottom: 1vmin;
+
+    .item-icon {
+
+      .border {
+        background-image: url('../images/ui/frame_c_01.png');
+      }
+
+      &, .img, .img-bg {
+        border-radius: 50%;
+      }
+    }
+  }
+}

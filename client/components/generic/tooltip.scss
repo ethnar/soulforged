@@ -1,0 +1,25 @@
+.tooltip {
+  position: relative;
+
+  .tooltip-text {
+    @include background-image-with-border('images/ui/plank_16.png', 45, 3vmin);
+
+    left: 0;
+    top: calc(100% + 1vmin);
+    position: absolute;
+    display: none;
+    color: $bright-text-color;
+    text-shadow: $text-shadow;
+    font-size: 60%;
+    padding: 1vmin 4vmin;
+    white-space: nowrap;
+  }
+
+  &:hover,
+  &:active {
+    .tooltip-text {
+      display: block;
+      animation: fadeInFromNone 0.5s ease-out;
+    }
+  }
+}

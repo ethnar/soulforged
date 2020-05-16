@@ -1,0 +1,39 @@
+.connection-checker {
+  z-index: 90000;
+
+  .fade-enter-active {
+    transition: opacity 2s;
+  }
+  .fade-leave-active {
+    transition: opacity 0.2s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+
+  .problem-icon-wrapper {
+    @include top-level-shadow();
+    position: fixed;
+    top: 35vmin;
+    left: 2vmin;
+    z-index: 9010;
+  }
+  .problem-icon {
+    &.highlight {
+      animation: saturationBlink 1s infinite;
+      @include filter-fix();
+    }
+
+    .item-icon {
+      @include interactable();
+
+      .border {
+        background-image: url('../images/ui/frame_c_01.png');
+      }
+
+      &, .img, .img-bg {
+        border-radius: 50%;
+      }
+    }
+  }
+}

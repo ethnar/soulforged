@@ -1,0 +1,82 @@
+@font-face {
+  font-family: futhork;
+  src: url('../images/fonts/erikstormtrooper_new-futhork/new_futhork.ttf');
+}
+@font-face {
+  font-family: intlkarmy;
+  src: url('../images/fonts/intlkarmy_army-cypher/Tatalphabet.ttf');
+}
+@font-face {
+  font-family: wizardspeak;
+  src: url('../images/fonts/blambot_wizardspeak/wizspeak_worn.ttf');
+}
+@font-face {
+  font-family: mexlar;
+  src: url('../images/fonts/cumberland-fontworks_mexlar/Mexlar.ttf');
+}
+@font-face {
+  font-family: drachenklaue;
+  src: url('../images/fonts/ret-samys_lsw-drachenklaue/LSW-Drachenklaue-Samys-0.1.ttf');
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.plot-text-wrapper {
+  line-height: 21px;
+  //max-height: 50vmax;
+  //overflow: auto;
+
+  .plot-text {
+    display: inline;
+
+    span {
+      display: inline-block;
+      white-space: pre-wrap;
+      opacity: 0;
+      animation: fadein 0.2s;
+      animation-fill-mode: forwards;
+    }
+
+    .mystery-font {
+      display: inline;
+    }
+
+    &.futhork .mystery-font {
+      font-family: futhork, Arial;
+      font-size: 60%;
+    }
+    &.intlkarmy .mystery-font {
+      font-family: intlkarmy, Arial;
+      text-transform: lowercase;
+    }
+    &.wizardspeak .mystery-font {
+      font-family: wizardspeak, Arial;
+      font-size: 70%;
+    }
+    &.mexlar .mystery-font {
+      font-family: mexlar, Arial;
+      font-size: 70%;
+    }
+    &.drachenklaue .mystery-font {
+      font-family: drachenklaue, Arial;
+      font-size: 65%;
+      letter-spacing: -0.3em;
+    }
+
+    .word {
+      white-space: nowrap;
+    }
+  }
+
+  &.show-all {
+    .plot-text {
+      span {
+        animation-delay: 0s !important;
+        animation: none;
+        opacity: 1;
+      }
+    }
+  }
+}

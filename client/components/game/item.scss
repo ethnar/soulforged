@@ -1,0 +1,204 @@
+.item-icon {
+  $padding: 0.0625;
+  position: relative;
+  width: $size-normal;
+  height: $size-normal;
+  padding: $size-normal * $padding;
+  box-sizing: border-box;
+  font-size: 50%;
+  text-shadow: 0 0 0.55vmin black, 0 0 0.55vmin black;
+  color: white;
+  background: black;
+  border-radius: 15%;
+
+  &.border-1 {
+    @include fixed-size-border-frame();
+
+    //&.blue {
+    //  @include fixed-size-border-frame('blue');
+    //}
+    //&.green {
+    //  @include fixed-size-border-frame('green');
+    //}
+    //&.red {
+    //  @include fixed-size-border-frame('red');
+    //}
+    //&.blue.red {
+    //  @include fixed-size-border-frame('bluered');
+    //}
+  }
+  &.border-2 {
+    @include fixed-size-border-frame-2('', '.border');
+
+    &.blue {
+      @include fixed-size-border-frame-2('blue', '.border');
+    }
+    &.green {
+      @include fixed-size-border-frame-2('green', '.border');
+    }
+    &.red {
+      @include fixed-size-border-frame-2('red', '.border');
+    }
+    &.blue.red {
+      @include fixed-size-border-frame-2('bluered', '.border');
+    }
+  }
+
+  &.interactable {
+    @include interactable();
+  }
+
+  .slot {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  .img {
+    height: 100%;
+    width: 100%;
+    border-radius: 7%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+  }
+
+  .img-bg {
+    height: 100%;
+    width: 100%;
+    background: black;
+  }
+
+  .qty {
+    position: absolute;
+    bottom: 2%;
+    right: 4%;
+
+    .secondary {
+      font-size: 60%;
+    }
+
+    &.limit {
+      color: darkorange;
+      animation: saturationBlink 1s infinite;
+      @include filter-fix();
+    }
+  }
+
+  .level {
+    position: absolute;
+    font-size: 80%;
+    top: 2%;
+    right: 4%;
+  }
+
+  .integrity {
+    position: absolute;
+    top: 2%;
+    left: 4%;
+    width: 30%;
+    height: 40%;
+    @include integrity-icon();
+  }
+  .trinket {
+    position: absolute;
+    font-size: 50%;
+    top: 2%;
+    right: 4%;
+    width: 90%;
+
+    .trinket-props {
+      display: flex;
+
+      .skill {
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: left;
+        white-space: normal;
+      }
+    }
+  }
+
+  &.large {
+    width: $size-large;
+    height: $size-large;
+    padding: $padding * $size-large;
+    font-size: 60%;
+  }
+  &.small {
+    width: $size-small;
+    height: $size-small;
+    padding: $padding * $size-small;
+    font-size: 60%;
+
+    .integrity {
+      font-size: 0;
+      position: absolute;
+      bottom: -10%;
+      left: 4%;
+    }
+    .qty {
+      font-size: 80%;
+      position: absolute;
+      bottom: -5%;
+      right: 4%;
+    }
+  }
+  &.tiny {
+    width: $size-tiny;
+    height: $size-tiny;
+    padding: $size-tiny * $padding;
+    font-size: 50%;
+
+    .qty {
+      font-size: 80%;
+      position: absolute;
+      bottom: -10%;
+      right: 4%;
+    }
+  }
+  &.super-tiny {
+    width: $size-super-tiny;
+    height: $size-super-tiny;
+    padding: $size-super-tiny * $padding;
+    font-size: 60%;
+  }
+  &.map-icon {
+    width: $size-map-icon;
+    height: $size-map-icon;
+    padding: $size-map-icon * $padding;
+    font-size: 60%;
+  }
+}
+
+.item-craft-recipes {
+  display: flex;
+  overflow: auto;
+}
+
+.item-craft-recipe {
+  > * > * > button {
+    padding: 0;
+    background: none;
+
+    &::before, &::after {
+      content: none;
+    }
+  }
+}
+
+.action .item-icon .trinket .trinket-props .skill {
+  font-size: 160%;
+}
+
+.utility-button-item {
+  .item-icon {
+    &::before {
+      filter: saturate(0) brightness(0.5);
+      @include filter-fix();
+    }
+  }
+}

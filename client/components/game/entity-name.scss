@@ -1,0 +1,41 @@
+.entity-name {
+    &.unnamed {
+        .name {
+            opacity: 0.35;
+        }
+    }
+
+    &.editable {
+        @include interactable();
+
+        &:hover {
+            .name, .edit-icon {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.name-option {
+    display: flex;
+    max-width: 70vmin;
+    margin: 0 auto;
+
+    input {
+        width: 1vmin;
+        flex-grow: 1;
+    }
+    span.points {
+        width: 20vmin;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.player-input {
+    max-width: 70vmin;
+    margin: 0 auto;
+    width: 100%
+}

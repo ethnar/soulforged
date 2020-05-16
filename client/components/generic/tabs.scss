@@ -1,0 +1,123 @@
+.tabs {
+  $border: 2vmin;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+
+  &.placement-right {
+    flex-direction: row-reverse;
+
+    .tab-headers {
+      flex-direction: column;
+      padding-top: 7vmin;
+
+      > div {
+        border-left: red;
+        position: relative;
+        left: -0.5vmin;
+        padding-left: 4vmin;
+        z-index: 1;
+        background-color: black;
+        filter: brightness(0.5);
+        @include filter-fix();
+
+        &.active {
+          z-index: 3;
+          filter: none;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: -1vmin;
+            top: -2vmin;
+            border: 2vmin solid transparent;
+            border-left: 2vmin solid black;
+            width: 2vmin;
+            z-index: 46;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .tab-contents {
+      //z-index: 2;
+    }
+    &::before {
+      //content: '';
+      position: absolute;
+      background-color: black;
+      border-radius: $border;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 10vmin;
+      z-index: -2;
+    }
+  }
+
+  .tab-headers {
+    display: flex;
+    min-height: 10vmin;
+
+    > div {
+      padding: 5px;
+      border: 1px solid #aaddff;
+      white-space: nowrap;
+      @include interactable();
+      @include border-1();
+      border-radius: 0 2vmin 2vmin 0;
+
+      &.active {
+        //background: lightsteelblue;
+      }
+    }
+  }
+
+  .tab-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .tab {
+      height: 100%;
+      overflow: auto;
+    }
+  }
+
+  .tab-contents {
+    $borderWidth: $border;
+    position: relative;
+    flex-grow: 1;
+    border: $borderWidth solid transparent;
+
+    &::after {
+      @include border-1($borderWidth);
+      content: '';
+      position: absolute;
+      top: -$borderWidth;
+      left: -$borderWidth;
+      right: -$borderWidth;
+      bottom: -$borderWidth;
+      z-index: -100;
+      background: black;
+    }
+  }
+
+  .indicator {
+    width: 5vmin;
+    height: 5vmin;
+    position: absolute;
+    bottom: -2.5vmin;
+    right: -2.5vmin;
+    font-size: 60%;
+    text-align: center;
+    line-height: 5vmin;
+    border-radius: 50%;
+    background: url('../images/ui/frame_c_01.png') top left no-repeat;
+    background-color: #064960;
+    background-size: 100% 100%;
+    color: aliceblue;
+    text-shadow: 1px 1px 2px cyan;
+  }
+}

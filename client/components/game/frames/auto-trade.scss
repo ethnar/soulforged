@@ -1,0 +1,117 @@
+.auto-trade {
+  &.modal.player-trades {
+    .item-list {
+      max-height: unset;
+    }
+
+    .item-selection {
+      max-height: 40vh;
+      display: flex;
+      overflow: auto;
+      flex-direction: column;
+    }
+
+    @media screen and (min-aspect-ratio: 12/9) {
+      .item-selection {
+        max-height: unset;
+        flex-grow: 1;
+      }
+
+      .main {
+        display: flex;
+      }
+
+      .controls {
+        flex-direction: column;
+      }
+
+      .item-condition-picker {
+        flex-wrap: wrap;
+
+        .item {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  .full-width {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .listing-target {
+    font-size: 50%;
+  }
+
+  .header, .count {
+    font-size: 60%;
+    white-space: nowrap;
+
+    td {
+      padding: 0 2vmin;
+      line-height: 8vmin;
+    }
+  }
+
+  .count {
+    padding-right: 3vmin;
+    text-shadow: $text-shadow;
+  }
+
+  .is-new-listing {
+    background: #064960;
+    box-shadow: inset 0 0 3vmin 3vmin black;
+  }
+
+  .item-icon {
+    float: left;
+  }
+
+  .action-container {
+    display: flex;
+    white-space: nowrap;
+    padding-top: 2vmin;
+  }
+
+  .item-listing-offer {
+    + .item-listing-offer {
+      border-top: 1px solid #382916;
+    }
+  }
+
+  .other-selection {
+    //display: flex;
+  }
+}
+
+.new-listing {
+  td {
+    vertical-align: top;
+  }
+
+  .item-icon {
+    float: none;
+  }
+
+  .wrapping {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.action.accept .icon {
+  background-image: url('../images/icons8-handshake-100.png') !important;
+}
+
+.action.edit .icon {
+  background-image: url('../images/icons8-pencil-100.png') !important;
+}
+
+.action.trade .icon {
+  background-image: url('../images/icons8-coins-100.png') !important;
+}
+
+.action.delete .icon {
+  background-image: url('../images/icons8-delete-100.png') !important;
+}

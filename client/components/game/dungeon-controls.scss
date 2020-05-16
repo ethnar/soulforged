@@ -1,0 +1,79 @@
+.dungeon-controls-wrapper {
+  position: relative;
+  width: 33vmin;
+  min-width: 33vmin;
+}
+
+.dungeon-controls {
+  bottom: 0;
+  width: 33vmin;
+  height: 33vmin;
+  position: absolute;
+  padding: 1vmin;
+
+  .directional-action {
+    width: 10vmin;
+    height: 10vmin;
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    .item-icon {
+      transform: scale(0.83);
+      transform-origin: top left;
+    }
+
+    .action {
+      margin: 0;
+      height: 10vmin;
+      width: 10vmin;
+
+      .icon {
+        min-width: 8.3vmin;
+      }
+    }
+
+    &.center {
+      top: 50%;
+      left: 50%;
+      margin-top: -5vmin;
+      margin-left: -5vmin;
+    }
+    &.up {
+      top: 0;
+      left: 50%;
+      margin-left: -5vmin;
+      background-image: url('../images/ui/curs_01_t_nobg_top_grey_bleak.png');
+      .action.Travel .icon {
+        background-image: url('../images/icons8-up-100.png') !important;
+      }
+    }
+    &.bottom {
+      bottom: 0;
+      left: 50%;
+      margin-left: -5vmin;
+      background-image: url('../images/ui/curs_01_t_nobg_down_grey_bleak.png');
+      .action.Travel .icon {
+        background-image: url('../images/icons8-down-100.png') !important;
+      }
+    }
+    &.right {
+      right: 0;
+      top: 50%;
+      margin-top: -5vmin;
+      background-image: url('../images/ui/curs_01_t_nobg_right_grey_bleak.png');
+      .action.Travel .icon {
+        background-image: url('../images/icons8-right-100.png') !important;
+      }
+    }
+    &.left {
+      left: 0;
+      top: 50%;
+      margin-top: -5vmin;
+      background-image: url('../images/ui/curs_01_t_nobg_left_grey_bleak.png');
+      .action.Travel .icon {
+        background-image: url('../images/icons8-left-100.png') !important;
+      }
+    }
+  }
+}

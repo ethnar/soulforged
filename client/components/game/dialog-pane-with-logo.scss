@@ -1,0 +1,78 @@
+.dialog-pane-with-logo {
+  padding-top: 50px;
+
+  .main-container-logo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    background: url('../images/ui/bg_01_02.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 8vmin;
+    width: 80vmin;
+    min-width: 30vmax;
+    margin: 0 auto 5vmin;
+    position: relative;
+    color: $text-color-dark;
+
+    .heading {
+      position: relative;
+      max-width: 64vmin;
+      width: 64vmin;
+      margin: 0 auto;
+    }
+
+    header, .header {
+      background: url('../images/ui/Plank_09.png') no-repeat;
+      background-size: 100% 100%;
+      height: 12vmin;
+      position: absolute;
+      width: 100%;
+      line-height: 12vmin;
+      padding-right: 8vmin;
+      top: 12vmin;
+      color: $bright-text-color;
+      text-shadow: $text-shadow;
+      text-align: right;
+      left: 0;
+    }
+
+    .logo {
+      height: 30vmin;
+      background: url('../images/ui/logo.png') left center no-repeat;
+      background-size: auto 100%;
+      z-index: 2;
+      position: relative;
+      left: -2vmin;
+    }
+
+    .error {
+      min-height: 30px;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+
+    .text {
+      margin: 10px 0 20px;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 60%;
+      color: #333;
+    }
+
+    button {
+      max-width: 64vmin;
+      width: 64vmin;
+      margin: 0 auto;
+    }
+
+    a.credits {
+      font-size: 70%;
+    }
+  }
+}

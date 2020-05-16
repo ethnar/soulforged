@@ -1,0 +1,46 @@
+$text-color: #D1AE7D;
+
+body {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  background: #221912;
+  font-family: BaseFont, Arial;
+  color: $text-color;
+}
+
+.container {
+  text-align: center;
+
+  .icon {
+    $size: 20vmin;
+    height: $size;
+    width: $size;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    &.maintenance {
+      background-image: url('../images/en_craft_11.png?embed');
+    }
+    &.crash {
+      background-image: url('../images/pt_t_13.png?embed');
+    }
+  }
+
+  .header {
+    font-size: 10vmin;
+    background-image: url('../images/Plank_09.png?embed');
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    line-height: 12vmin;
+    text-shadow: 0.5vmin 0.5vmin 1vmin black;
+  }
+
+  .text {
+    width: 80vmin;
+    margin: 2vmin auto;
+    font-size: 6vmin;
+  }
+}

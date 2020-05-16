@@ -1,0 +1,76 @@
+.ui-tutorial {
+  z-index: 9002;
+
+  .explainer-highlight {
+    box-shadow: 0 0 0 200vmax rgba(0, 0, 0, 0.7);
+    border-radius: 2vmin;
+    position: fixed;
+    z-index: 999990;
+  }
+
+  .explainer-text-box {
+    padding: 1vmin;
+    position: fixed;
+    z-index: 999999;
+    width: 60vw;
+    margin-left: -30vw;
+
+    border: 12px solid;
+    background: url('../images/ui/bg_01_02_continuous_dark.png');
+    border-image: url('../images/ui/obj_08_full_border.png') 23;
+    background-size: 120%;
+    
+    .action-call {
+      text-align: right;
+    }
+
+    .close {
+      float: right;
+      width: 7vmin;
+      height: 7vmin;
+      background-image: url('../images/ui/adventure_ui/png/buttons/button_03_brown.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      z-index: 1;
+      @include interactable();
+    }
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0);
+    z-index: 999980;
+  }
+}
+
+.popout-for-tutorial {
+  outline: 200vmax rgba(0,0,0,.5) solid;
+  z-index: 9999999999 !important;
+  height: 0 !important;
+  overflow: visible;
+}
+
+.tutorial-trigger {
+  @include interactable();
+
+  .icon {
+    width: 13vmin;
+    height: 15vmin;
+
+    background: url('../images/ui/icons/quest_complete_t.png');
+    background-size: 130%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+
+  &.paused {
+    .icon {
+      filter: saturate(0.1);
+      @include filter-fix();
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.toggle-filter-button {
+  font-size: 8.3vmin;
+  width: 7vmin;
+  height: 7vmin;
+  min-width: 7vmin;
+  line-height: 7vmin;
+  border-radius: 50%;
+  background: black url('../images/ui/frame_c_01.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 3vmin;
+  top: 0.5vmin;
+
+  .icon {
+    height: 100%;
+    width: 100%;
+    background: url('../images/icons8-search-100.png');
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+    filter: contrast(0) sepia(1);
+    @include filter-fix();
+  }
+}

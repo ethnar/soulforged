@@ -1,0 +1,164 @@
+.action {
+  display: flex;
+  min-height: 7vmin;
+  margin-bottom: 0;
+  padding: 0 1vmin;
+  @include icon-shadow();
+
+  &.text {
+    min-height: 9vmin;
+
+    .icon, .difficulty-indicator {
+      margin-left: 2vmin;
+      height: 9vmin;
+      width: 9vmin;
+    }
+
+    .text {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 9vmin;
+
+      &:first-child {
+        margin-left: 3vmin;
+      }
+      &:last-child {
+        margin-right: 3vmin;
+      }
+    }
+  }
+
+  .difficulty-indicator-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 1vmin;
+    //$shadow: inset -0.4vmin -0.2vmin 1vmin 0.2vmin;
+    //$shadow: 0vmin 0vmin 1vmin 0.5vmin;
+    $shadow: inset 0vmin 0vmin 1.5vmin 0.4vmin;
+
+    &.Trivial {
+      box-shadow: $shadow green;
+    }
+    &.Fairly.simple {
+      box-shadow: $shadow limegreen;
+    }
+    &.Difficult {
+      box-shadow: $shadow yellow;
+    }
+    &.Extremely.Difficult {
+      box-shadow: $shadow darkorange;
+    }
+    &.Insurmountable {
+      box-shadow: $shadow red;
+    }
+  }
+
+  .icon, .difficulty-indicator {
+    position: static;
+    min-width: 7vmin;
+    max-width: 7vmin;
+    height: 7vmin;
+  }
+
+  img {
+    padding: 1vmin;
+    width: 5vmin;
+    height: 5vmin;
+  }
+  &.flashing {
+    animation: saturationBlink 1s infinite;
+    @include filter-fix();
+  }
+
+  .icon + [hidden] + .difficulty-indicator {
+    margin-left: -2vmin;
+  }
+}
+
+.warning-text {
+  color: darkorange;
+}
+
+.difficulty-indicator {
+  .icon {
+    background: url('../images/icons8-brainstorm-skill-100.png');
+    background-size: auto 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    @include filter-fix();
+
+    &.inline {
+      vertical-align: middle;
+      display: inline-block;
+      width: 5vmin;
+      height: 5vmin;
+      background-size: 80%;
+    }
+  }
+
+  .Trivial {
+    color: green;
+    &.icon, +.icon {
+      filter: contrast(0) brightness(1.2) sepia(1) hue-rotate(50deg) saturate(10) brightness(0.5) drop-shadow(0.3vmin 0.3vmin 0.1vmin black);
+    }
+  }
+  .Fairly.simple {
+    color: limegreen;
+    &.icon, +.icon {
+      filter: contrast(0) brightness(1.2) sepia(1) hue-rotate(50deg) saturate(10) drop-shadow(0.3vmin 0.3vmin 0.1vmin black);
+    }
+  }
+  .Difficult {
+    color: yellow;
+    &.icon, +.icon {
+      filter: contrast(0) brightness(1.2) sepia(1) hue-rotate(15deg) saturate(10) drop-shadow(0.3vmin 0.3vmin 0.1vmin black);
+    }
+  }
+  .Extremely.Difficult {
+    color: darkorange;
+    &.icon, +.icon {
+      filter: contrast(0) brightness(1.2) sepia(1) hue-rotate(-15deg) saturate(10) drop-shadow(0.3vmin 0.3vmin 0.1vmin black);
+    }
+  }
+  .Insurmountable {
+    color: red;
+    &.icon, +.icon {
+      filter: contrast(0) brightness(1.2) sepia(1) hue-rotate(-35deg) saturate(10) drop-shadow(0.3vmin 0.3vmin 0.1vmin black);
+    }
+  }
+}
+
+.repetition-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2vmin;
+
+  .intro-text {
+    min-width: 100%;
+    padding: 1.5vmin 0;
+  }
+}
+
+.recipe-diagram {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .arrow {
+    width: 12vmin;
+    min-width: 12vmin;
+    height: 12vmin;
+    background: url('../images/icons8-right-100-color.png');
+    background-repeat: no-repeat;
+    background-size: 70% 70%;
+    background-position: center;
+    filter: hue-rotate(-175deg) saturate(0.5);
+    @include filter-fix();
+  }
+}

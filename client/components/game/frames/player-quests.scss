@@ -1,0 +1,66 @@
+.player-quests {
+  .title {
+    background: url('../images/ui/rank_icons/rank_icons_png/rank_02/bg_01.png');
+    max-width: 70vmin;
+    background-size: 100% 100%;
+    line-height: 7vmin;
+    font-size: 75%;
+    margin: 0 auto;
+    text-align: center;
+    color: $bright-text-color;
+    text-shadow: $text-shadow;
+    position: relative;
+  }
+
+  .quest + .quest .title {
+    margin-top: 4vmin;
+  }
+
+  .objective {
+    font-size: 50%;
+    display: flex;
+    margin-top: 1vmin;
+
+    .label {
+      flex-grow: 1;
+    }
+
+    .progress-bar {
+      min-width: 12vmin;
+      height: 4vmin;
+      @include border-1(1vmin);
+
+      .fill {
+        height: 100%;
+        background: limegreen;
+        border-radius: 0.5vmin;
+        background-image: linear-gradient(limegreen, green);
+      }
+    }
+
+    .checkmark {
+      //float: left;
+      $size: 4vmin;
+      margin-right: 1vmin;
+      width: $size;
+      min-width: $size;
+      height: $size;
+      background: url('../images/ui/frame_red_dark.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+
+      @include border-1(1vmin);
+    }
+
+    &.complete {
+      .checkmark {
+        background-image: url('../images/ui/frame_green_saturate.png');
+      }
+    }
+  }
+
+  button.highlight {
+    animation: saturationBlink 1s infinite;
+    @include filter-fix();
+  }
+}

@@ -1,0 +1,396 @@
+.creature {
+  position: relative;
+
+  &.interactable {
+    @include interactable();
+  }
+
+  &.hostile {
+    .name,
+    .power-level,
+    .current-action-wrapper,
+    .icon::before {
+      //filter: saturate(2) hue-rotate(330deg) brightness(0.8);
+      //@include filter-fix();
+    }
+  }
+
+  .centered & {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .avatar-icon {
+
+    > img {
+      width: 100%;
+      height: 100%;
+      background: $avatar-bg-color;
+      vertical-align: top;
+    }
+  }
+
+  .name {
+    position: absolute;
+    background: url('../images/ui/title.png');
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    left: 0;
+    height: 10vmin;
+    top: 0.27vmin;
+    color: black;
+    text-align: center;
+    font-size: 60%;
+    line-height: 6.48vmin;
+    padding: 0 4.59vmin 0 4.59vmin;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 3;
+  }
+  .marker {
+    display: none; // TODO: do
+
+
+    position: absolute;
+    z-index: 4;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 6.76vmin;
+    height: 6.76vmin;
+    top: 0.81vmin;
+    right: 0;
+    &.is-hostile {
+      background-image: url('../images/ui/hostile_icon.png');
+    }
+    &.has-chat-options {
+      background-image: url('../images/ui/chat-icon.png');
+      animation: saturationBlink 1s infinite;
+      @include filter-fix();
+
+      .modal & {
+        animation: none;
+      }
+    }
+  }
+}
+
+.creature-wrapper {
+  $padding: 0.0625;
+
+  .track {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    border-radius: 2px;
+    opacity: 0;
+    //transform: translateZ(0);
+    transition: opacity 0.1s linear;
+
+    &.shown {
+      opacity: 1;
+    }
+  }
+
+  .avatar-icon .border {
+    background-image: url('../images/ui/frame_s_01_yellow.png') !important;
+  }
+  &.hostile {
+    .avatar-icon .border {
+      background-image: url('../images/ui/frame_s_01_red.png') !important;
+    }
+  }
+  &.friendly {
+    .avatar-icon .border {
+      background-image: url('../images/ui/frame_s_01_green.png') !important;
+    }
+  }
+  &.self {
+    .avatar-icon .border {
+      background-image: url('../images/ui/frame_s_01_blue.png') !important;
+    }
+  }
+
+  &.dead {
+    filter: saturate(0) brightness(0.6);
+    @include filter-fix();
+  }
+
+  .avatar-icon {
+    @include fixed-size-border-frame();
+
+    .img {
+      height: 100%;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      border-radius: 8%;
+      border: 0.5vmin solid black;
+    }
+  }
+
+  &.large {
+    width: $size-large;
+    max-width: $size-large;
+    height: $size-large;
+
+    .img {
+      width: $size-large;
+      max-width: $size-large;
+      height: $size-large;
+    }
+  }
+
+  &.normal {
+    .img {
+      width: $size-normal;
+      height: $size-normal;
+    }
+  }
+
+  &.small {
+    .img {
+      width: $size-small;
+      height: $size-small;
+    }
+  }
+
+  &.map-icon {
+    .name, .current-action {
+      display: none;
+    }
+  }
+}
+
+.dialogue-mode {
+  counter-reset: dialog-option;
+
+  .dialog-choices {
+    clear: both;
+  }
+  .npc-text {
+    text-align: left;
+  }
+  .npc-icon {
+    width: 16vmin;
+    float: left;
+    margin-right: 3vmin;
+    border: 2px solid burlywood;
+  }
+  .dialog-option {
+    @include interactable();
+    text-align: left;
+    font-size: 70%;
+    min-height: 8vmin;
+
+    &::before {
+      counter-increment: dialog-option;
+      content: "• ";
+    }
+
+    &.disabled {
+      color: #555;
+    }
+  }
+  .actions-list {
+    .action {
+      margin-top: 3vmin;
+    }
+  }
+}
+
+.current-action.creature-list,
+.creature-list .current-action {
+  width: 6vmin;
+  height: 6vmin;
+  font-size: 50%;
+}
+
+.creature-list-effects {
+  margin: 1vmin;
+}
+
+.creature-details-modal .main-section {
+  display: flex;
+
+  .bond-level {
+    color: $text-color;
+  }
+
+  .training-container {
+    display: flex;
+    margin-bottom: 1vmin;
+
+    .training-name {
+      font-size: 70%;
+      flex-grow: 1;
+    }
+  }
+
+  .help-text {
+    text-align: left;
+    margin-left: 2vmin;
+  }
+
+  .value-text {
+    font-size: 55%;
+    margin-left: 2vmin;
+    display: flex;
+    text-align: left;
+
+    .current-action-wrapper {
+      float: left;
+      margin-right: 2vmin;
+    }
+  }
+
+  .equipment-display {
+    .equipment-list {
+      margin-left: 2vmin;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .creature-info {
+    flex-grow: 1;
+  }
+
+  .creature-effects {
+    margin-left: 2vmin;
+
+    section {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .buff {
+      width: 50vmin;
+
+      .details {
+        overflow: hidden;
+        position: relative;
+        //width: calc(100% - 3vmin);
+      }
+
+      .label, .description {
+        //white-space: nowrap;
+      }
+    }
+  }
+}
+
+//.threat-level-indicator {
+//  font-size: 60%;
+//  display: flex;
+//  $size: 8vmin;
+//  height: $size;
+//  margin: 0 2vmin;
+//
+//  .icon {
+//    width: $size;
+//    background-image: url('../images/ui/threat-indicator-icon.png');
+//    background-size: 100% 100%;
+//    background-repeat: no-repeat;
+//  }
+//  .label, .level {
+//    color: darkred;
+//    line-height: $size * 2 / 3;
+//    padding: ($size * 1.2 / 6) 1vmin 0;
+//    background-image: url('../images/ui/threat-indicator-mid.png');
+//    background-size: 120% 100%;
+//    background-repeat: no-repeat;
+//  }
+//  .level {
+//    color: $red;
+//  }
+//  .right {
+//    width: $size / 4;
+//    background-image: url('../images/ui/threat-indicator-right.png');
+//    background-size: 100% 100%;
+//    background-repeat: no-repeat;
+//  }
+//
+//  &.friendly {
+//    .icon {
+//      background-image: url('../images/ui/friendly-threat-indicator-icon.png');
+//    }
+//    .label, .level {
+//      color: darkgreen;
+//      background-image: url('../images/ui/friendly-threat-indicator-mid.png');
+//    }
+//    .level {
+//      color: $green;
+//    }
+//    .right {
+//      background-image: url('../images/ui/friendly-threat-indicator-right.png');
+//    }
+//  }
+//  &.unknown {
+//    .icon {
+//      background-image: url('../images/ui/unknown-threat-indicator-icon.png');
+//    }
+//    .label, .level {
+//      color: #919100;
+//      background-image: url('../images/ui/unknown-threat-indicator-mid.png');
+//    }
+//    .level {
+//      color: $yellow;
+//    }
+//    .right {
+//      background-image: url('../images/ui/unknown-threat-indicator-right.png');
+//    }
+//  }
+//}
+
+.list-item-with-props {
+  .threat-level-indicator {
+    margin-top: 2vmin;
+  }
+}
+
+.creature-short-display {
+  display: flex;
+  flex-grow: 1;
+
+  .details {
+    .item-list {
+      flex-wrap: nowrap;
+      overflow: hidden;
+
+      @include overflow-shading();
+
+      .creature-effects-wrapper {
+        width: 0;
+      }
+    }
+
+    .label {
+      @include overflow-shading();
+    }
+  }
+}
+
+.creature-list-item {
+  .label {
+    &.player {
+      color: $color-neutral;
+      //text-shadow: 5px 5px $color-neutral;
+      font-style: italic;
+    }
+    &.friend {
+      color: $color-friend;
+      //text-shadow: 5px 5px $color-friend;
+    }
+    &.rival {
+      color: $color-rival;
+      //text-shadow: 5px 5px $color-rival;
+    }
+    &.self {
+      color: $color-self;
+      //text-shadow: 5px 5px $color-rival;
+    }
+  }
+}

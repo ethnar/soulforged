@@ -1,0 +1,174 @@
+.fighting-screen-view {
+  display: flex;
+  height: 100%;
+  background: black;
+  padding-bottom: 11vmin;
+
+  .main-display {
+    width: 100%;
+    height: 100%;
+  }
+
+  .strike-projectile, .strike-display {
+    position: absolute;
+    width: 12vmin;
+    height: 12vmin;
+    margin-left: -6vmin;
+    margin-top: -6vmin;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 2000;
+  }
+
+  .strike-projectile {
+    pointer-events: none;
+    background-image: url('../images/attack-sprite.png');
+  }
+
+  .strike-display {
+    pointer-events: none;
+    height: 8vmin;
+    margin-top: -4vmin;
+
+    .label {
+      position: absolute;
+      bottom: 0;
+
+      &.miss, &.deflect, &.hit {
+        padding: 0.2vmin 2vmin;
+        color: black;
+        font-size: 80%;
+      }
+
+      &.miss {
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 10px white;
+        white-space: nowrap;
+      }
+      &.deflect {
+        background: rgba(175, 175, 255, 0.8);
+        box-shadow: 0 0 10px rgb(175, 175, 255);
+        white-space: nowrap;
+      }
+      &.hit {
+        padding: 1vmin 1vmin;
+        background: rgba(255, 50, 55, 0.8);
+        box-shadow: 0 0 10px rgb(255, 50, 55);
+      }
+      &.graze {
+        padding: 1vmin 1vmin;
+        background: rgba(255, 188, 66, 0.8);
+        box-shadow: 0 0 10px rgb(255, 188, 66);
+      }
+      .extra-text {
+        font-size: 50%;
+      }
+      .damages {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+
+  .creature-frames {
+    display: flex;
+    flex-direction: column-reverse;
+    height: calc(100% - 12vmin);
+  }
+
+  .creature-frames > section {
+    height: 50%;
+    max-height: 50%;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .extra {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      z-index: 10;
+      background: black;
+      border: 2.2vmin solid;
+      border-image: url('../images/ui/obj_08_full_border.png') 23;
+    }
+
+    > .creature-list {
+      overflow: auto;
+    }
+    
+    .actions-list {
+      display: flex;
+    }
+  }
+
+  @media screen and (min-aspect-ratio: 12/9) {
+    .creature-frames {
+      flex-direction: row;
+    }
+
+    .creature-frames > section {
+      width: 50%;
+      max-width: 50%;
+      height: 100%;
+      max-height: 100%;
+    }
+  }
+
+  .victory {
+    position: fixed;
+    left: auto;
+    top: auto;
+    height: 100vh;
+    width: 100vw;
+    bottom: 0;
+    right: 0;
+    z-index: 9000;
+
+    .overlay {
+      position: absolute !important;
+    }
+
+    .banner {
+      $width: 50vmin;
+      position: absolute;
+      top: 30vh;
+      left: calc((100vw - #{$width}) / 2);
+      width: $width;
+      height: 45vmin;
+      z-index: 9001;
+      background-image: url('../images/ui/adventure_ui/png/background/banner_02.png');
+      background-size: 60%;
+      background-repeat: no-repeat;
+      background-position: top center;
+      animation: popIn 1s ease-out;
+
+      @include interactable();
+
+      .label {
+        margin-top: 8vmin;
+        text-align: center;
+        font-size: 130%;
+        color: $bright-text-color;
+        text-shadow: $text-shadow;
+        @include background-image-with-border('images/ui/adventure_ui/png/frame/die_02.png', 104, 3vmin);
+      }
+    }
+  }
+
+  .quick-actions {
+    display: flex;
+
+    .scrollable {
+      margin-left: 2vmin;
+      width: calc(100vw - 14vmin);
+    }
+
+    .item-list {
+      flex-wrap: nowrap;
+      overflow: auto;
+    }
+  }
+}

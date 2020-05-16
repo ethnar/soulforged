@@ -1,0 +1,76 @@
+.radial-progress {
+  $shadow: 6px 6px 10px rgba(0, 0, 0, 0.3);
+
+  position: relative;
+  overflow: hidden;
+  box-sizing: content-box !important;
+  border-radius: 50%;
+  border: 1px solid black;
+
+  .radial-progress-wrapper {
+    $full-main-color: #ddd;
+    $empty-color: black;
+    $bg-color: white;
+    $size: 100px;
+    $width: 7px;
+    $border-size: $width;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $size;
+    height: $size;
+    overflow: hidden;
+    transform-origin: 0 0;
+
+    .half {
+      border: $border-size solid transparent;
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+
+      &.first-background {
+        border-color: $empty-color;
+        z-index: 0;
+      }
+
+      &.first {
+        border-top-color: $full-main-color;
+        border-left-color: $full-main-color;
+        z-index: 1;
+      }
+      &.second-overlay {
+        border-top-color: $empty-color;
+        border-left-color: $empty-color;
+        z-index: 2;
+        transform: rotate(-45deg);
+      }
+      &.second {
+        border-top-color: $full-main-color;
+        border-left-color: $full-main-color;
+        z-index: 3;
+      }
+    }
+    .mid-cover {
+      position: absolute;
+      left: $width;
+      top: $width;
+      width: $size - 2 * $width;
+      height: $size - 2 * $width;
+      border-radius: 50%;
+      z-index: 4;
+      box-shadow: $shadow;
+      border: 2.5px solid black;
+    }
+    .shadow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: inset $shadow;
+      z-index: 3;
+    }
+  }
+}

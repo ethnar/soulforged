@@ -1,0 +1,276 @@
+$main-background: #221912;
+$text-color-very-dark: #301d18;
+$text-color-dark: #7a592b;
+$text-color: #b88741;
+$bright-text-color: #D1AE7D;
+$text-shadow: 0.2vmin 0.2vmin 0.4vmin black;
+$avatar-bg-color: beige;
+
+$green: limegreen;
+$red: red;
+$yellow: yellow;
+
+$color-friend: #00b200;
+$color-rival: #ff7600;
+$color-neutral: #b7b9c9;
+$color-self: #009af1;
+
+$button-borders: 2vmin;
+
+$Z-ui-controls: 5000;
+$Z-map: 2000;
+
+$bottom-bar-height: (100vmin / 5) * 0.75;
+
+$size-large: 20vmin;
+$size-normal: 12vmin;
+$size-small: 8vmin;
+$size-tiny: 5vmin;
+$size-super-tiny: 3vmin;
+$size-map-icon: 10px;
+
+@mixin fog-of-war() {
+  filter: brightness(0.6);
+  @include filter-fix();
+}
+
+@mixin disabled() {
+  filter: saturate(50%) brightness(50%);
+  @include filter-fix();
+}
+
+@mixin interactable() {
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.2) !important;
+    @include filter-fix();
+  }
+}
+
+@mixin icon-shadow() {
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: none center center no-repeat;
+    background-size: auto 50%;
+  }
+  .icon {
+    filter: contrast(0) brightness(1.2) sepia(1) drop-shadow(0.3vmin 0.3vmin 0.1vmin black);
+    @include filter-fix();
+  }
+}
+
+@mixin fixed-size-border-frame($color: '', $selector: '.border') {
+  position: relative;
+
+  @if $color != '' {
+    $color: '_' + $color;
+  }
+
+  #{$selector} {
+    content: '';
+    position: absolute;
+    //top: -$offset;
+    //left: -$offset;
+    //right: -$offset;
+    //bottom: -$offset;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/ui/frame_s_01#{$color}.png') no-repeat;
+    background-size: 100%;
+    background-position: center;
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
+@mixin fixed-size-border-frame-2($color: '', $selector: '.border') {
+  @include fixed-size-border-frame($color, $selector);
+
+  @if $color != '' {
+    $color: '_' + $color;
+  }
+
+  #{$selector} {
+    background: url('../images/ui/frame_s_04#{$color}_rotated.png') no-repeat;
+    background-size: 100%;
+    background-position: center;
+  }
+}
+
+@mixin ripped-effect-right($rhythm, $depth) {
+  $tip: calc(100% - #{$depth});
+  $ripped: '0 0, #{$tip} 0, ';
+  $end: 100 - $rhythm;
+  $isPrevTip: true;
+
+  @for $i from 1 through $end {
+    @if $i % $rhythm == 0 {
+      @if $isPrevTip {
+        $ripped: #{$ripped + '100% ' + $i + '%, '};
+        $isPrevTip: false;
+      } @else {
+        $ripped: #{$ripped + '#{$tip} ' + $i + '%, '};
+        $isPrevTip: true;
+      }
+    }
+  }
+
+  $ripped: #{$ripped + '#{$tip} 100%, 0 100%'};
+
+  clip-path: polygon($ripped);
+}
+
+@mixin overflow-shading() {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20vmin;
+    bottom: -20vmin;
+    left: -20vmin;
+    right: 0;
+    z-index: 10;
+    box-shadow: inset -3vmin 0 3vmin black;
+    pointer-events: none;
+
+    .modal & {
+      box-shadow: inset -3vmin 0 3vmin #261e15;
+    }
+  }
+}
+
+@function first($list) {
+  @return nth($list, 1);
+}
+
+@function last($list) {
+  @return nth($list, length($list));
+}
+
+@mixin background-image-with-border($img, $border-clip, $width, $position: relative) {
+  $imgW: image-width($img);
+  $imgH: image-height($img);
+  $imgFullPath: '../' + $img;
+  position: $position;
+  $border-clipH: first($border-clip);
+  $border-clipW: last($border-clip);
+  $widthH: first($width);
+  $widthW: last($width);
+
+  &::before {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-style: solid;
+    border-width: $width;
+    border-image: url($imgFullPath) $border-clip;
+    position: absolute;
+    z-index: -2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(#{$widthH} + #{if($border-clipH != 0, -1px, 0px)});
+    left: calc(#{$widthW} + #{if($border-clipW != 0, -1px, 0px)});
+    right: calc(#{$widthW} + #{if($border-clipW != 0, -1px, 0px)});
+    bottom: calc(#{$widthH} + #{if($border-clipH != 0, -1px, 0px)});
+    //top: if($border-clipH != 0, -1px, 0);
+    //left: if($border-clipW != 0, -1px, 0);
+    //right: if($border-clipW != 0, -1px, 0);
+    //bottom: if($border-clipH != 0, -1px, 0);
+    $extraW: if($border-clipW != 0, 1, 0);
+    $extraH: if($border-clipH != 0, 1, 0);
+    background-size:
+            calc(100% * #{($imgW) / ($imgW - $border-clipW * 2)})
+            calc(100% * #{($imgH) / ($imgH - $border-clipH * 2)});
+    background-position: center center;
+    background-image: url($imgFullPath);
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+}
+
+@mixin SafariOnly() {
+  @media not all and (min-resolution:.001dpcm) {
+    @content;
+  }
+}
+
+@mixin iOSOnly() {
+  @supports (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+
+@mixin filter-fix () {
+  @include SafariOnly() {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  @include iOSOnly() {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+@mixin integrity-icon() {
+  background-image: url('../images/icons8-salad-bowl-cracked-outline-100.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  @include filter-fix();
+
+  &.living {
+    background-image: url('../images/icons8-restaurant-100-outline.png');
+  }
+  &.building {
+    background-image: url('../images/icons8-home-100-broken.png');
+  }
+
+  &.integrity-100-value:not(.force) {
+    display: none !important;
+  }
+  &.integrity-50-value {
+    filter: brightness(0.4) sepia(1) hue-rotate(20deg) saturate(4) contrast(15) brightness(200) drop-shadow(0 0 2px yellow);
+  }
+  &.integrity-20-value {
+    filter: brightness(0.4) sepia(1) hue-rotate(10deg) saturate(4) contrast(15) drop-shadow(0 0 2px orange);
+  }
+  &.integrity-0-value {
+    filter: brightness(0.4) sepia(1) hue-rotate(-10deg) saturate(4) contrast(15) brightness(0.7) drop-shadow(0 0 2px red);
+  }
+}
+
+@mixin border-1 ($width: 2vmin) {
+  border: $width solid;
+  border-radius: $width;
+  border-image: url('../images/ui/frame_c2_01_border.png') 24;
+}
+
+@mixin border-2 ($width: 2vmin) {
+  border-style: solid;
+  border-width: $width;
+  border-image: url('../images/ui/obj_08_full_border.png') 23;
+}
+
+@mixin top-level-shadow() {
+  filter: drop-shadow(-0.3vmin 0.8vmin 0.6vmin #111);
+  @include filter-fix();
+}
+
+@mixin text-secondary() {
+  font-size: 60%;
+  line-height: 7vmin;
+  color: $bright-text-color;
+}

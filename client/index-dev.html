@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-framework="javascript">
+    <head>
+        <meta charset="utf-8">
+        <title>Soulforged</title>
+        <link rel="stylesheet" href="_css/all.css" />
+        <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="brown" />
+
+<!--        <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-app.js"></script>-->
+<!--        <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-messaging.js"></script>-->
+
+        <script src="libs/howler/howler.min.js"></script>
+        <script src="node_modules/hammerjs/hammer.js"></script>
+        <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="node_modules/vue-router/dist/vue-router.js"></script>
+        <script src="node_modules/vue-rx/dist/vue-rx.js"></script>
+        <script src="node_modules/vue-touch/dist/vue-touch.js"></script>
+        <script src="node_modules/rxjs/bundles/Rx.min.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <router-view></router-view>
+        </div>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>

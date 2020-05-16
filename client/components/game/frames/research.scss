@@ -1,0 +1,45 @@
+.clear-materials {
+  position: absolute;
+  top: 8vmin;
+  right: 0;
+}
+
+.research-selection {
+  .help-text {
+    display: block;
+  }
+
+  .research-materials {
+    margin-left: 3vmin;
+  }
+
+  .research-mats-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .tool-selector-section {
+    .help-text {
+      width: 0;
+      min-width: 100%;
+      overflow: hidden;
+    }
+  }
+}
+
+.select-materials {
+  .disabled {
+    pointer-events: none;
+    filter: saturate(0.4) brightness(0.5);
+    @include filter-fix();
+  }
+
+  .filter-input {
+    margin-bottom: 2vmin;
+  }
+
+  .item-list {
+    //justify-content: center;
+  }
+}

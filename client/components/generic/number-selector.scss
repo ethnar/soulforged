@@ -1,0 +1,49 @@
+.number-selector {
+  display: flex;
+
+  &.inline {
+    display: inline-block;
+  }
+
+  .number {
+    width: 20vmin;
+  }
+
+  .choices {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3vmin;
+
+    .quick-selection-buttons {
+      display: flex;
+    }
+
+    button, .button {
+      margin: 0 0.5vmin;
+      padding: 0 2vmin;
+      min-width: 11vmin;
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 10vmin;
+    text-align: right;
+    font-size: 85%;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+  }
+
+  button, .button {
+    flex-grow: 1;
+    height: 10vmin;
+    line-height: 10vmin;
+    width: auto;
+    padding: 0 0;
+    text-align: center;
+    margin: 0 0;
+  }
+}

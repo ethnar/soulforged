@@ -1,0 +1,41 @@
+.player-effects {
+  &.only-icons {
+    $width: calc(100vw - 62vmin);
+    max-width: $width;
+    height: 8vmin;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -20vmin;
+      bottom: -20vmin;
+      width: $width;
+      z-index: 10;
+      box-shadow: inset -3vmin 0 3vmin #251205;
+      pointer-events: none;
+    }
+  }
+
+  &.interactable {
+    @include interactable();
+  }
+
+}
+
+.player-effects-grouped {
+  .details {
+    display: none;
+  }
+
+  .player-effects > section {
+    display: flex;
+    flex-wrap: wrap;
+
+    .buff {
+      flex-grow: 0;
+      @include interactable();
+    }
+  }
+}

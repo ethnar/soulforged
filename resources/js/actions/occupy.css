@@ -1,0 +1,70 @@
+.occupy-backend .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0 2vmin; }
+  .occupy-backend .item .icon-wrapper.self .multicolor-icon {
+    background-image: url("../../../images/ui/icons/flag_t_blue.png"); }
+  .occupy-backend .item .icon-wrapper.rival .multicolor-icon {
+    background-image: url("../../../images/ui/icons/flag_t_rival.png"); }
+  .occupy-backend .item .icon-wrapper.neutral .multicolor-icon {
+    background-image: url("../../../images/ui/icons/flag_t_neutral.png"); }
+  .occupy-backend .item .icon-wrapper.friend .multicolor-icon {
+    background-image: url("../../../images/ui/icons/flag_t_green.png"); }
+  .occupy-backend .item .icon-wrapper .multicolor-icon {
+    margin: 0;
+    display: block;
+    height: 9vmin;
+    width: 9vmin;
+    background-size: 100%;
+    background-position: center center; }
+  .occupy-backend .item.level-0 .icon-wrapper {
+    margin-left: -1.5vmin;
+    z-index: 4; }
+    .occupy-backend .item.level-0 .icon-wrapper + .icon-wrapper {
+      margin-left: -6vmin;
+      z-index: 3; }
+      .occupy-backend .item.level-0 .icon-wrapper + .icon-wrapper + .icon-wrapper {
+        z-index: 2; }
+        .occupy-backend .item.level-0 .icon-wrapper + .icon-wrapper + .icon-wrapper + .icon-wrapper {
+          z-index: 1; }
+  .occupy-backend .item.level-1 .icon-wrapper {
+    margin-left: -1vmin;
+    z-index: 3; }
+    .occupy-backend .item.level-1 .icon-wrapper + .icon-wrapper {
+      margin-left: -5vmin;
+      z-index: 2; }
+      .occupy-backend .item.level-1 .icon-wrapper + .icon-wrapper + .icon-wrapper {
+        z-index: 1; }
+  .occupy-backend .item.level-2 .icon-wrapper {
+    margin-left: 0.5vmin;
+    z-index: 2; }
+    .occupy-backend .item.level-2 .icon-wrapper + .icon-wrapper {
+      margin-left: -4.5vmin;
+      z-index: 1; }
+  .occupy-backend .item.level-3 .icon-wrapper {
+    margin-left: 3vmin; }
+  .occupy-backend .item:not(.active) .button {
+    -webkit-filter: brightness(0.4);
+    filter: brightness(0.4); }
+    @media not all and (min-resolution: 0.001dpcm) {
+      .occupy-backend .item:not(.active) .button {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform; } }
+    @supports (-webkit-overflow-scrolling: touch) {
+      .occupy-backend .item:not(.active) .button {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform; } }
+  .occupy-backend .item .button {
+    width: 60% !important;
+    max-width: 17vmin;
+    margin: 0 auto; }
+  .occupy-backend .item .text {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    font-size: 60%;
+    line-height: 9vmin;
+    text-align: center; }

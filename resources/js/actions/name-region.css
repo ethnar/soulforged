@@ -1,0 +1,28 @@
+.region-map {
+  position: relative;
+  z-index: 1;
+  width: 0;
+  height: 15vh;
+  margin-top: 15vh;
+  margin-left: 50%;
+  -webkit-transform: scale(0.4);
+  transform: scale(0.4);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-filter: drop-shadow(0 0 10px beige);
+  filter: drop-shadow(0 0 10px beige); }
+  @media not all and (min-resolution: 0.001dpcm) {
+    .region-map {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      will-change: transform; } }
+  @supports (-webkit-overflow-scrolling: touch) {
+    .region-map {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      will-change: transform; } }
+  @supports (-webkit-overflow-scrolling: touch) {
+    .region-map {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      will-change: transform; } }

@@ -1,0 +1,25 @@
+.training-option {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 1vmin;
+  cursor: pointer; }
+  .training-option:hover {
+    -webkit-filter: brightness(1.2) !important;
+    filter: brightness(1.2) !important; }
+    @media not all and (min-resolution: 0.001dpcm) {
+      .training-option:hover {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform; } }
+    @supports (-webkit-overflow-scrolling: touch) {
+      .training-option:hover {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform; } }
+  .training-option .selection {
+    width: 10vmin;
+    min-width: 10vmin; }
+  .training-option .details {
+    text-align: left; }

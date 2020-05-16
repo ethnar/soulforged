@@ -1,0 +1,37 @@
+.slider {
+  height: 10vmin;
+  position: relative;
+  $handleWidth: 10vmin;
+
+  &.disabled {
+    @include disabled();
+    pointer-events: none;
+  }
+
+  .background {
+    @include interactable();
+    @include background-image-with-border('images/ui/strip_bg01_dark.png', 15, 1.2vmin);
+    position: absolute;
+    top: 30%;
+    height: 40%;
+    width: calc(100% - 6vmin);
+    left: 3vmin;
+  }
+
+  .handle-container {
+    position: absolute;
+    left: $handleWidth / 2;
+    width: calc(100% - #{$handleWidth});
+  }
+  .handle {
+    @include interactable();
+    margin-left: -$handleWidth / 2;
+    width: 10vmin;
+    height: 8vmin;
+    position: absolute;
+    top: 1vmin;
+    background-image: url('../images/ui/obj_01.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+}

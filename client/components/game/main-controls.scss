@@ -1,0 +1,318 @@
+$control-size: 10vmin;
+$spacing-size: $control-size * 0.1;
+
+.overlay {
+  background-color: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  cursor: pointer;
+}
+
+.main-controls-wrapper {
+
+  .inner-wrapper {
+    display: flex;
+  }
+
+  .main-controls {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    right: 0;
+    z-index: $Z-ui-controls;
+    max-width: 100vw;
+    flex-direction: column;
+    @include top-level-shadow();
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+
+    > * {
+      z-index: 5;
+    }
+
+    //&::before {
+    //  content: '';
+    //  flex-grow: 1;
+    //}
+  }
+
+  .category,
+  .item {
+    .btn {
+      @include interactable();
+      @include icon-shadow();
+      @include filter-fix();
+
+      display: block;
+      position: relative;
+      width: $control-size;
+      height: $control-size;
+      z-index: 1;
+
+      border-radius: 50%;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -2;
+        background-color: antiquewhite;
+        border: 0.5vmin solid black;
+        border-radius: 50%;
+      }
+
+      &.selected::after {
+        background-color: gold;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background: url('../images/ui/frame_c_01.png') top left no-repeat;
+        background-size: 100%;
+      }
+
+      margin: 0 $spacing-size $spacing-size 0;
+
+      .number {
+        width: 5vmin;
+        height: 5vmin;
+        position: absolute;
+        bottom: -0.5vmin;
+        right: -0.5vmin;
+        font-size: 60%;
+        text-align: center;
+        line-height: 5vmin;
+        border-radius: 50%;
+        background: url('../images/ui/frame_c_01.png') top left no-repeat;
+        background-color: #064960;
+        background-size: 100% 100%;
+        color: aliceblue;
+        text-shadow: 1px 1px 2px cyan;
+      }
+
+      .icon {
+        filter: none;
+      }
+
+      &:not(.selected).highlighted {
+        animation: saturationBlink 1s infinite;
+      }
+
+      &.fighting-screen {
+        .icon {
+          background-image: url('../images/icons8-sword-100-orange.png');
+        }
+      }
+      &.node .icon {
+        background-image: url('../images/icons8-polygon-100-orange.png');
+      }
+      &.items .icon {
+        background-image: url('../images/icons8-drawstring-bag-100-orange.png');
+      }
+      &.settings .icon {
+        background-image: url('../images/icons8-services-100-orange.png');
+      }
+      &.trading .icon {
+        //background-image: url('../images/icons8-coins-100-orange.png');
+        background-image: url('../images/icons8-handshake-100-orange.png');
+        //background-image: url('../images/icons8-synchronize-100-orange.png');
+      }
+      &.craft .icon {
+        background-image: url('../images/icons8-hammer-filled-100-orange.png');
+      }
+      &.character .icon {
+        background-image: url('../images/icons8-user-male-100-orange.png');
+      }
+      &.map-mode .icon {
+        background-image: url('../images/icons8-search-100-orange.png');
+      }
+      &.travel .icon {
+        background-image: url('../images/icons8-treasure-map-100-orange.png');
+      }
+      &.resources .icon {
+        background-image: url('../images/icons8-oak-tree-100-orange.png');
+      }
+      &.creatures .icon {
+        background-image: url('../images/icons8-people-filled-100-orange.png');
+      }
+      &.structures .icon {
+        background-image: url('../images/icons8-home-100-orange.png');
+      }
+      &.level-down .icon {
+        background-image: url('../images/icons8-stairs-down-100-orange.png');
+      }
+      &.level-up .icon {
+        background-image: url('../images/icons8-stairs-up-100-orange.png');
+      }
+      &.none .icon {
+        background-image: url('../images/icons8-delete-100-orange.png');
+      }
+    }
+  }
+
+  .submenu {
+    position: absolute;
+    bottom: $control-size + 1 * $spacing-size;
+    right: 0;
+
+    > .tool-selector {
+      position: absolute;
+      top: -12vmin;
+    }
+  }
+  .map-mode ~ .submenu {
+    right: auto;
+  }
+
+  @media screen and (min-aspect-ratio: 12/9) {
+    .submenu {
+      > .tool-selector {
+        position: absolute;
+        left: -15vmin;
+        top: 5vmin;
+      }
+    }
+  }
+}
+
+.content-frame-wrapper {
+  position: absolute;
+  bottom: 11vmin;
+  right: 0;
+  z-index: 5000;
+}
+
+.content-frame {
+  margin: $spacing-size;
+  height: 50vh;
+  width: 98vw;
+  max-width: 98vw;
+
+  &.full-screen {
+    position: absolute;
+    margin: 0;
+    bottom: -11vmin;
+    right: 0;
+    background: black;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    z-index: -10;
+    padding-bottom: 12vmin;
+  }
+
+  .tab-contents {
+    width: 88vw;
+    max-width: 88vw;
+  }
+
+  .tab-header {
+    width: 10vmin;
+    height: 10vmin;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &.inventory {
+      background-image: url('../images/icons8-drawstring-bag-100-orange.png');
+    }
+    &.equipment {
+      background-image: url('../images/icons8-footman-100-orange.png');
+    }
+    &.on-the-ground {
+      background-image: url('../images/icons8-here-filled-100-orange.png');
+    }
+    &.active-trades {
+      background-image: url('../images/icons8-coins-100-orange.png');
+      //background-image: url('../images/icons8-rotate-double-100-orange.png');
+      //background-image: url('../images/icons8-handshake-100-orange.png');
+    }
+    &.offers {
+      background-image: url('../images/icons8-list-view-100-orange.png');
+      //background-image: url('../images/icons8-synchronize-100-orange.png');
+    }
+    &.relationships {
+      background-image: url('../images/icons8-handshake-100-orange.png');
+      //background-image: url('../images/icons8-synchronize-100-orange.png');
+    }
+    &.log {
+      background-image: url('../images/icons8-list-filled-100-orange.png');
+    }
+    &.effects {
+      background-image: url('../images/icons8-checked-user-male-100-orange.png');
+    }
+    &.stats {
+      background-image: url('../images/icons8-brainstorm-skill-100-orange.png');
+    }
+    &.events {
+      background-image: url('../images/icons8-lightning-bolt-filled-100-orange.png');
+    }
+    &.settings {
+      background-image: url('../images/icons8-services-100-orange.png');
+    }
+    &.resources {
+      background-image: url('../images/icons8-oak-tree-100-orange.png');
+    }
+    &.creatures {
+      background-image: url('../images/icons8-people-filled-100-orange.png');
+    }
+    &.item-craft {
+      background-image: url('../images/icons8-hammer-filled-100-orange.png');
+    }
+    &.structure, &.structures {
+      background-image: url('../images/icons8-home-100-orange.png');
+    }
+    &.research {
+      background-image: url('../images/icons8-test-tube-100-orange.png');
+    }
+    &.quests {
+      background-image: url('../images/icons8-exclamation-mark-100-orange.png');
+    }
+    &.furnishing {
+      background-image: url('../images/icons8-armchair-100-orange.png');
+    }
+  }
+
+  @media screen and (min-aspect-ratio: 12/9) {
+    height: calc(98vh - 12vmin);
+    width: 53vw;
+    max-width: 53vw;
+  }
+
+  .tab-contents {
+    @media screen and (min-aspect-ratio: 12/9) {
+      width: 48vw;
+      max-width: 48vw;
+    }
+  }
+}
+
+//@media screen and (min-aspect-ratio: 12/9) {
+//  .content-frame {
+//    height: calc(98vh - 12vmin);
+//    width: 55vw;
+//  }
+//}

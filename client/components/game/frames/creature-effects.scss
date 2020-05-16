@@ -1,0 +1,81 @@
+@mixin effect-sev-background($color, $second: black) {
+  background-image: radial-gradient($color, $second);
+}
+
+@keyframes effect-max-severity {
+  0% {
+    background-size: 50% 50%;
+  }
+  50% {
+    background-size: 100% 100%;
+  }
+  100% {
+    background-size: 50% 50%;
+  }
+}
+
+.creature-effects {
+  &.only-icons {
+    section {
+      display: flex;
+    }
+  }
+
+  .buff {
+    &.severity--5 {
+      .item-icon .img-bg {
+        @include effect-sev-background(#19cb00);
+      }
+    }
+    &.severity--4 {
+      .item-icon .img-bg {
+        @include effect-sev-background(#00a123);
+      }
+    }
+    &.severity--3 {
+      .item-icon .img-bg {
+        @include effect-sev-background(#008b41);
+      }
+    }
+    &.severity--2 {
+      .item-icon .img-bg {
+        @include effect-sev-background(#52cc94);
+      }
+    }
+    &.severity--1 {
+      .item-icon .img-bg {
+        @include effect-sev-background(#469eb0);
+      }
+    }
+    &.severity-0 {
+      .item-icon .img-bg {
+        @include effect-sev-background(#787c7b);
+      }
+    }
+    &.severity-1 {
+      .item-icon .img-bg {
+        @include effect-sev-background(tan);
+      }
+    }
+    &.severity-2 {
+      .item-icon .img-bg {
+        @include effect-sev-background(darkorange);
+      }
+    }
+    &.severity-3 {
+      .item-icon .img-bg {
+        @include effect-sev-background(red);
+      }
+    }
+    &.severity-4 {
+      .item-icon .img-bg {
+        @include effect-sev-background(red, black);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100%;
+        animation: linear 0.5s effect-max-severity infinite;
+        @include filter-fix();
+      }
+    }
+  }
+}

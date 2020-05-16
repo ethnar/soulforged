@@ -1,0 +1,69 @@
+.relationship-picker {
+  display: flex;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    width: 33.33%;
+    margin: 0;
+
+    &.rival .multicolor-icon {
+      background-image: url('../images/ui/icons/flag_t_rival.png');
+    }
+    &.neutral .multicolor-icon {
+      background-image: url('../images/ui/icons/flag_t_neutral.png');
+    }
+    &.friend .multicolor-icon {
+      background-image: url('../images/ui/icons/flag_t_green.png');
+    }
+    .multicolor-icon {
+      margin: 0 auto;
+      display: block;
+      height: 9vmin;
+      width: 9vmin;
+      background-size: 100%;
+      background-position: center center;
+    }
+
+    &.rival {
+      .label, .button::before, .button::after {
+        filter: hue-rotate(-15deg) saturate(2);
+        @include filter-fix();
+      }
+    }
+    &.neutral {
+      .label, .button::before, .button::after {
+        filter: hue-rotate(195deg) saturate(0.3);
+        @include filter-fix();
+      }
+    }
+    &.friend {
+      .label, .button::before, .button::after {
+        filter: hue-rotate(85deg) saturate(1.6);
+        @include filter-fix();
+      }
+    }
+
+    &:not(.active) {
+      .button {
+        @include filter-fix();
+        filter: brightness(0.4);
+      }
+    }
+
+    .button {
+      width: 60% !important;
+      margin: 0 20%;
+
+      .icon {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+      }
+    }
+
+    .label {
+      font-size: 60%;
+    }
+  }
+}

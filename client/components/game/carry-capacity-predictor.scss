@@ -1,0 +1,30 @@
+.carry-capacity-predictor {
+  display: flex;
+
+  .predictor-side {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 60%;
+      line-height: 6vmin;
+    }
+  }
+
+  .arrow {
+    margin-top: 6vmin;
+    width: 8vmin;
+    min-width: 8vmin;
+    height: 8vmin;
+    background: url('../images/icons8-right-100-color.png');
+    background-repeat: no-repeat;
+    background-size: 70% 70%;
+    background-position: center;
+    filter: hue-rotate(-175deg) saturate(0.5);
+    @include filter-fix();
+  }
+  .arrow-left {
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,50 @@
+.recipe-filter {
+  position: fixed;
+  background: black;
+  overflow: auto;
+  z-index: -999;
+
+  top: -87.5vh;
+  width: 69vw;
+  height: 38vh;
+  right: 19vmin;
+
+  @media screen and (min-aspect-ratio: 12/9) {
+    top: auto;
+    bottom: 14vmin;
+    right: 52.5vw;
+    width: 40vw;
+    height: 66vh;
+  }
+
+  @include border-1();
+  
+  .filter-container {
+    display: flex;
+
+    span {
+      width: 35%;
+    }
+
+    select {
+      width: 65%;
+    }
+  }
+
+  .text-input-label {
+    line-height: 8vmin;
+    margin-right: 1vmin;
+  }
+
+  .filter-element {
+    display: flex;
+
+    input[type="text"] {
+      min-width: 1vmin;
+    }
+
+    .checkbox-label {
+      line-height: 7vmin;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.agree-text {
+  font-size: 36%;
+  margin: 2vmin 12vmin;
+  color: #333;
+  display: flex;
+
+  div:last-child {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 1vmin;
+  }
+}

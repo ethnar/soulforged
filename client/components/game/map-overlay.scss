@@ -1,0 +1,36 @@
+.map-overlay {
+  &, .time-of-day-overlay, .weather-effect {
+    position: absolute;
+    $positioning: -50%;
+    top: $positioning;
+    left: $positioning;
+    bottom: $positioning;
+    right: $positioning;
+    z-index: 1;
+    pointer-events: none;
+
+    .underground & {
+      display: none;
+    }
+  }
+
+  .dense-fog {
+    background-image: url('../images/misc/fog-2.png');
+  }
+
+  .strange-mist {
+    background-image: url('../images/misc/fog-2-purple.png');
+  }
+
+  .thunderstorm {
+    background-image: url('../images/misc/rain5-small.png');
+    background-size: 400px;
+    background-color: rgba(0,0,0,0.3);
+    &.dry {
+      background-image: url('../images/misc/fog-3.png');
+    }
+    &.cold {
+      background-image: url('../images/misc/rain3-small.png');
+    }
+  }
+}

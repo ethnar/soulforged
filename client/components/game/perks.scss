@@ -1,0 +1,94 @@
+.perks {
+  .skill-points {
+    text-align: center;
+
+    .perk-icon {
+      color: $bright-text-color;
+      line-height: 5vmin;
+    }
+  }
+
+  .help-text {
+    line-height: 1em;
+  }
+
+  .perks-list-wrapper {
+    position: relative;
+  }
+
+  .perks-list {
+    max-height: 40vh;
+    overflow: auto;
+
+    $top-fade: 4vmin;
+    $bottom-fade: 8vmin;
+    padding-top: $top-fade;
+    padding-bottom: $bottom-fade;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      left: 0;
+      z-index: 10;
+    }
+
+    &::before {
+      top: 0;
+      height: $top-fade;
+      background-image: linear-gradient($main-background, $main-background 5%, transparent);
+    }
+    &::after {
+      bottom: 0;
+      height: $bottom-fade;
+      background-image: linear-gradient(transparent, $main-background 95%, $main-background);
+    }
+
+    @media screen and (min-aspect-ratio: 12/9) {
+      max-height: 50vh;
+    }
+  }
+
+  .perk-item {
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:not(.selected) {
+      img {
+        filter: saturate(0.5) brightness(0.5);
+        @include filter-fix();
+      }
+
+      .description {
+        color: $text-color-dark;
+      }
+    }
+  }
+
+  .perk-icon {
+    text-align: center;
+    border-radius: 50%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('../images/ui/frame_c_04.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}

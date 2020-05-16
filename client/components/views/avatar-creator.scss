@@ -1,0 +1,84 @@
+.option-selector {
+  display: flex;
+  flex-direction: row;
+
+  .label {
+    flex-grow: 1;
+    line-height: 10vmin;
+    text-align: center;
+    margin-top: 1vmin;
+    font-size: 70%;
+  }
+}
+
+.character-creator-wrapper {
+  flex-grow: 1;
+}
+
+.avatar-creator-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: '';
+    display: flex;
+    flex-grow: 1;
+  }
+  &::after {
+    content: '';
+    display: flex;
+    flex-grow: 3;
+  }
+}
+
+.avatar-creator {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .main-header {
+    width: calc(100% + 33vmin);
+    position: relative;
+    left: -33vmin;
+  }
+
+  .name {
+    display: flex;
+
+    span {
+      vertical-align: bottom;
+      flex-grow: 1;
+      font-size: 70%;
+      line-height: 8vmin;
+      padding: 0 0 0 2vmin;
+    }
+    input {
+      margin-left: 2vmin;
+      max-width: 40vmin;
+    }
+  }
+
+  .avatar {
+    margin-top: 8vmin;
+    height: 33vmin;
+  }
+  
+  .preferences-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-aspect-ratio: 12/9) {
+      flex-direction: row;
+    }
+  }
+
+  .preferences {
+    min-width: 60vmin;
+    flex-grow: 1;
+  }
+
+  .avatar, .preferences {
+    @include border-1();
+  }
+}

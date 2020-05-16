@@ -1,0 +1,95 @@
+.occupy-backend {
+
+  .item {
+    display: flex;
+    margin: 0 0 2vmin;
+
+    .icon-wrapper {
+      &.self .multicolor-icon {
+        background-image: url('../../../images/ui/icons/flag_t_blue.png');
+      }
+      &.rival .multicolor-icon {
+        background-image: url('../../../images/ui/icons/flag_t_rival.png');
+      }
+      &.neutral .multicolor-icon {
+        background-image: url('../../../images/ui/icons/flag_t_neutral.png');
+      }
+      &.friend .multicolor-icon {
+        background-image: url('../../../images/ui/icons/flag_t_green.png');
+      }
+      .multicolor-icon {
+        margin: 0;
+        display: block;
+        height: 9vmin;
+        width: 9vmin;
+        background-size: 100%;
+        background-position: center center;
+      }
+    }
+
+    &.level-0 {
+      .icon-wrapper {
+        margin-left: -1.5vmin;
+        z-index: 4;
+        & + .icon-wrapper {
+          margin-left: -6vmin;
+          z-index: 3;
+          & + .icon-wrapper {
+            z-index: 2;
+            & + .icon-wrapper {
+              z-index: 1;
+            }
+          }
+        }
+      }
+    }
+    &.level-1 {
+      .icon-wrapper {
+        margin-left: -1vmin;
+        z-index: 3;
+        & + .icon-wrapper {
+          margin-left: -5vmin;
+          z-index: 2;
+          & + .icon-wrapper {
+            z-index: 1;
+          }
+        }
+      }
+    }
+    &.level-2 {
+      .icon-wrapper {
+        margin-left: 0.5vmin;
+        z-index: 2;
+        & + .icon-wrapper {
+          margin-left: -4.5vmin;
+          z-index: 1;
+        }
+      }
+    }
+    &.level-3 {
+      .icon-wrapper {
+        margin-left: 3vmin;
+      }
+    }
+
+    &:not(.active) {
+      .button {
+        @include filter-fix();
+        filter: brightness(0.4);
+      }
+    }
+
+    .button {
+      width: 60% !important;
+      max-width: 17vmin;
+      margin: 0 auto;
+    }
+
+    .text {
+      flex-grow: 1;
+      font-size: 60%;
+      line-height: 9vmin;
+      text-align: center;
+    }
+  }
+}

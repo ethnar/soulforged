@@ -1,0 +1,16 @@
+.quest-notification {
+  @include interactable();
+
+  .icon {
+    width: 13vmin;
+    height: 15vmin;
+
+    background: url('../images/ui/icons/quest_t.png');
+    background-size: 130%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+    animation: saturationBlink 1s infinite;
+    @include filter-fix();
+  }
+}

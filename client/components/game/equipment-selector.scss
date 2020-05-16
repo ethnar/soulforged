@@ -1,0 +1,55 @@
+.equipment-selector {
+  display: flex;
+  position: relative;
+  z-index: 3;
+
+  &.inactive {
+    display: none;
+  }
+  
+  label {
+    display: none;
+  }
+
+  &.expanded {
+    position: absolute;
+    width: auto !important;
+
+    padding-top: 6vmin;
+    margin-top: -8vmin;
+    margin-left: -2vmin;
+    background-color: black;
+    z-index: 5000;
+    @include border-2();
+
+    label {
+      top: 0;
+      display: block;
+      position: absolute;
+      font-size: 60%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+  }
+
+  .empty .slot .img {
+    background-color: black;
+    background-size: 50% 50%;
+    //background-image: url(../images/icons8-hammer-filled-100-orange.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .available-items {
+    display: flex;
+    min-width: 35vw;
+    max-width: 50vw;
+    flex-wrap: wrap;
+
+    z-index: 151;
+    left: 100%;
+    top: 0;
+  }
+}

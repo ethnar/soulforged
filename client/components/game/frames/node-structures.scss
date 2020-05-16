@@ -1,0 +1,24 @@
+.node-structures-frame {
+
+  .structure-listing-item {
+    display: flex;
+    flex-grow: 1;
+
+    .list-item-with-props {
+      flex-grow: 1;
+    }
+
+  }
+
+  header.under-construction ~ header.under-construction {
+    display: none;
+  }
+}
+
+.structure-description {
+  text-align: left;
+
+  .value {
+    color: $bright-text-color;
+  }
+}

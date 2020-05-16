@@ -1,0 +1,71 @@
+.carry-capacity {
+  $height: 8vmin;
+  $bar-border: 1.2vmin;
+  $outer-border: 1.5vmin;
+  height: $height;
+  position: relative;
+  margin-bottom: 0.5vmin;
+  overflow: hidden;
+
+  .bar {
+    //position: absolute;
+    width: 100%;
+    z-index: 1;
+    height: $height;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    @include background-image-with-border('images/ui/strip_bg.png', 28, $outer-border);
+
+    .fill-cut {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      z-index: 4;
+      border: 1.5vmin solid transparent;
+      @include background-image-with-border('images/ui/strip_green.png', 20, $bar-border);
+    }
+
+    &.burden-1 {
+      .fill {
+        @include background-image-with-border('images/ui/strip_yellow.png', 20, $bar-border);
+      }
+    }
+
+    &.burden-2 {
+      .fill {
+        @include background-image-with-border('images/ui/strip_orange.png', 20, $bar-border);
+      }
+    }
+
+    &.overburdened {
+      .fill {
+        @include background-image-with-border('images/ui/strip_red.png', 20, $bar-border);
+      }
+    }
+  }
+
+  .display {
+    $position-top: 2vmin;
+    $position-right: 3.3vmin;
+    position: absolute;
+    font-size: 50%;
+    color: black;
+    top: $position-top;
+    right: $position-right;
+
+    &.over {
+      z-index: 3;
+      top: $position-top - $outer-border;
+      right: $position-right - $outer-border;
+    }
+    &.under {
+      z-index: 1;
+      color: white;
+    }
+  }
+}

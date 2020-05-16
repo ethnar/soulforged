@@ -1,0 +1,15 @@
+.training-option {
+  @include interactable();
+  display: flex;
+  padding-bottom: 1vmin;
+  cursor: pointer;
+
+  .selection {
+    width: 10vmin;
+    min-width: 10vmin;
+  }
+
+  .details {
+    text-align: left;
+  }
+}

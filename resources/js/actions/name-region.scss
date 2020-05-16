@@ -1,0 +1,17 @@
+.region-map {
+  position: relative;
+  z-index: 1;
+  width: 0;
+  height: 15vh;
+  margin-top: 15vh;
+  margin-left: 50%;
+  transform: scale(0.4);
+  transform-origin: left top;
+  filter: drop-shadow(0 0 10px beige);
+  @include filter-fix();
+
+  @include iOSOnly() {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}

@@ -1,0 +1,30 @@
+.relationships {
+    
+    .action-container {
+        display: flex;
+    }
+    
+    .item {
+        font-size: 70%;
+        margin-left: 0.5vmin;
+        color: $bright-text-color;
+        display: flex;
+        cursor: default;
+
+        &.friend {
+            .name {
+                color: $color-friend;
+            }
+        }
+        &.rival {
+            .name {
+                color: $color-rival;
+            }
+        }
+
+        .name {
+            line-height: 8vmin;
+            flex-grow: 1;
+        }
+    }
+}

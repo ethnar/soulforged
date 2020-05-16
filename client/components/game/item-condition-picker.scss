@@ -1,0 +1,52 @@
+.item-condition-picker {
+  display: flex;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    width: 33.33%;
+    margin: 0;
+
+    .icon-wrapper {
+      &.upto100 .multicolor-icon {
+        background-image: url('../images/ui/icons/flag_t_rival.png');
+      }
+      .multicolor-icon {
+        margin: 0;
+        display: block;
+        height: 9vmin;
+        width: 9vmin;
+        background-size: 100%;
+        background-position: center center;
+      }
+    }
+
+    .integrity-icon {
+      @include integrity-icon();
+      background-size: 70%;
+      background-position: center;
+      width: 100%;
+      max-width: 8vmin;
+      margin: 0 auto;
+    }
+
+    &:not(.active) {
+      .button {
+        @include filter-fix();
+        filter: brightness(0.4);
+      }
+    }
+
+    .button {
+      width: 60% !important;
+      max-width: 17vmin;
+      margin: 0 auto;
+    }
+
+    .text {
+      font-size: 35%;
+      text-align: center;
+      margin: 0.5vmin auto 1vmin;
+    }
+  }
+}

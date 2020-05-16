@@ -1,0 +1,14 @@
+node_modules/
+.idea/
+.saves/*
+.map/*
+.credentials/*
+.logs/*
+!.saves/dummy
+!.map/dummy
+!.credentials/dummy
+!.logs/dummy
+*.psd
+*.log
+*/.out/*
+!*/.out/dummy

@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <script>
+            window.gameData = /*GAME_DATA*/;
+        </script>
+        <title>Soulforged</title>
+        <link rel="stylesheet" href="_css/all.css" />
+        <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="brown" />
+
+        <script src="node_modules/hammerjs/hammer.js"></script>
+        <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="node_modules/vue-router/dist/vue-router.js"></script>
+        <script src="node_modules/vue-rx/dist/vue-rx.js"></script>
+        <script src="node_modules/vue-touch/dist/vue-touch.js"></script>
+        <script src="node_modules/rxjs/bundles/Rx.min.js"></script>
+        <style type="text/css">
+            img.item, .item-icon {
+                width: 50px !important;
+                height: 50px !important;
+                background-color: black;
+            }
+            
+            .item-icon .qty {
+                font-size: 200%;
+            }
+
+            .tab-contents::after {
+                content: none !important;
+            }
+
+            .narrow-column {
+                max-width: 80px;
+                white-space: normal;
+            }
+
+            .item.small {
+                width: 25px;
+            }
+
+            .item.large {
+                width: 120px !important;
+                height: 120px !important;
+            }
+
+            .text-large {
+                font-size: 200%;
+            }
+
+            table {
+                border-collapse: collapse;
+            }
+
+            td {
+                border: 1px solid lightgrey;
+                padding: 2px 6px;
+                white-space: nowrap;
+            }
+
+            .wrap {
+                white-space: normal;
+            }
+
+            .number {
+                text-align: right;
+            }
+
+            .craft-deps td {
+                vertical-align: top;
+            }
+
+            .icons-row {
+                display: flex;
+            }
+
+            .tab {
+                height: auto !important;
+                overflow: visible !important;
+            }
+        </style>
+        <script src="_debug/debug.js" type="module"></script>
+    </head>
+    <body>
+        <div id="app">
+
+        </div>
+    </body>
+</html>

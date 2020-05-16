@@ -1,0 +1,128 @@
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.game-chat {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+
+  &:not(.persistent) {
+    position: fixed;
+    bottom: 15vmin;
+    left: 5vmin;
+    width: 66vw;
+    height: 0;
+    z-index: 2000;
+
+    @media screen and (min-aspect-ratio: 12/9) {
+      width: 40vw;
+      //bottom: 5vmin;
+    }
+
+    .messages-container {
+      max-height: 20vh !important;
+      @include interactable();
+    }
+  }
+
+  &[hidden] {
+    display: none;
+  }
+
+  .messages-container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 60%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-radius: 2vmin;
+    text-shadow: 1px 1px 1px black;
+    max-height: 100%;
+
+    .timestamp {
+      color: $text-color;
+    }
+
+    .message-line {
+      background: rgba(0, 0, 0, 0.65);
+      padding: 1vmin;
+
+      &:not(.visible) {
+        animation: fadeOut 1s ease-in;
+        animation-fill-mode: forwards;
+      }
+
+      &.gone {
+        display: none;
+      }
+    }
+
+    .author {
+      @include filter-fix();
+    }
+
+    .message-text {
+      word-break: break-word;
+      color: $bright-text-color;
+
+      &.anon {
+        color: $bright-text-color;
+
+        &.level-5 {
+          color: red;
+        }
+
+        &.level-4 {
+          color: orange;
+        }
+
+        &.level-1 {
+          color: limegreen;
+        }
+
+        .trade {
+          color: $text-color;
+
+          .items {
+            color: $bright-text-color;
+
+            b {
+              font-weight: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.persistent {
+    .messages-container {
+      flex-direction: column;
+    }
+  }
+
+  .message-input {
+    display: flex;
+    min-height: 10vmin;
+
+    input {
+      display: flex;
+      flex-grow: 1;
+      font-size: 80%;
+      color: $bright-text-color;
+      font-family: BaseFont;
+    }
+  }
+}

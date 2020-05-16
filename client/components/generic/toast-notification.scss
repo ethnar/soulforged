@@ -1,0 +1,25 @@
+.toast-message {
+  position: fixed;
+  background: url('../images/ui/obj_06_01_flip.png');
+  color: #5f4521;
+  //text-shadow: $text-shadow;
+  padding: 2vmin;
+  z-index: 9100;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid black;
+  top: -20vmin;
+  left: 0;
+  transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  font-size: 90%;
+  background-position: center bottom;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  text-shadow: 1px 1px 1px #ffeabc;
+  opacity: 0;
+
+  &.visible {
+    top: 0;
+    opacity: 1;
+  }
+}

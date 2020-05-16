@@ -1,0 +1,95 @@
+.meter-orb {
+  $padding: 1.2vmin;
+  $orb-size: 13.5vmin;
+  $inner-orb-size: $orb-size - 2 * $padding;
+  height: $orb-size;
+  width: $orb-size;
+  border-radius: 50%;
+  margin: 0.2vmin;
+  overflow: hidden;
+  position: relative;
+  padding: $padding;
+  background-image: url('../images/ui/emerald_03_orb_bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  &.interactable {
+    @include interactable();
+  }
+
+  .border {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url('../images/ui/frame_c_01.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 7;
+  }
+
+  .fill {
+    position: absolute;
+    bottom: $padding;
+    width: $inner-orb-size;
+    height: $inner-orb-size;
+    transition: clip-path 1s linear;
+    background-image: url('../images/ui/emerald_03_orb.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+
+    &.color-red {
+      //filter: hue-rotate(871deg);
+      //@include filter-fix();
+    }
+    &.color-dodgerblue {
+      filter: hue-rotate(220deg) brightness(1.3);
+      @include filter-fix();
+    }
+    &.color-orange {
+      filter: hue-rotate(40deg) saturate(1.3) brightness(1.4);
+      @include filter-fix();
+    }
+    &.color-darkred {
+      filter: hue-rotate(10deg) brightness(0.7);
+      @include filter-fix();
+    }
+    &.color-purple {
+      filter: hue-rotate(300deg);
+      @include filter-fix();
+    }
+  }
+
+  //&::before {
+  //  content: "";
+  //  position: absolute;
+  //  top: $padding + 0.01 * $orb-size;
+  //  left: $padding + 0.05 * $orb-size;
+  //  border-radius: 100%;
+  //  z-index: 2;
+  //  filter: blur(0);
+  //  @include filter-fix();
+  //  height: $inner-orb-size * 0.8;
+  //  width: $inner-orb-size * 0.4;
+  //  background: radial-gradient(circle at 130% 130%, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.8) 58%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
+  //  transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
+  //}
+  //
+  //&::after {
+  //  content: "";
+  //  position: absolute;
+  //  top: $padding + 0.05 * $orb-size;
+  //  left: $padding + 0.1 * $orb-size;
+  //  width: $inner-orb-size * 0.8;
+  //  height: $inner-orb-size * 0.8;
+  //  border-radius: 100%;
+  //  filter: blur(1px);
+  //  @include filter-fix();
+  //  z-index: 2;
+  //  transform: rotateZ(-30deg);
+  //  display: block;
+  //  background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 74%, white 80%, white 84%, rgba(255, 255, 255, 0) 100%);
+  //}
+}
