@@ -4,7 +4,7 @@ The source code of the Soulforged game.
 
 To get it going:
 
-Create a file `.credentials/google-auth-config.jsona`
+Create a file `.credentials/google-auth-config.json`
 
 with content in the format of:
 
