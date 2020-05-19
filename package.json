@@ -31,7 +31,7 @@
     "nodejs-websocket": "^1.7.1",
     "nodemailer": "^4.6.7",
     "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0",
+    "passport-google-oauth20": "^2.0.0",
     "prettier": "^1.19.1",
     "random-seed": "^0.3.0",
     "resurrect-js": "^1.0.1",
