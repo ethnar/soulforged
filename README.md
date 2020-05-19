@@ -18,7 +18,9 @@ with content in the format of:
 
 For this you'll need to create an application in Google developer console: https://console.developers.google.com/
 
-With that read, you can run the server:
+Ensure you're using Node.js version 8.
+
+With that done, you can run the server:
 
 ```
 npm install
