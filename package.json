@@ -29,7 +29,7 @@
     "jquery": "^3.3.1",
     "jsdom": "^11.11.0",
     "nodejs-websocket": "^1.7.1",
-    "nodemailer": "^4.6.7",
+    "nodemailer": "^6.4.16",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
     "prettier": "^1.19.1",
