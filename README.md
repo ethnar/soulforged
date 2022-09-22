@@ -1,6 +1,6 @@
-# Soulforged
+# Soulforged: Prelude
 
-The source code of the Soulforged game.
+The source code of the Soulforged Prelude game (aka SF0).
 
 To get it going:
 
