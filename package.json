@@ -14,7 +14,7 @@
     "crypto": "^1.0.1",
     "discord.js": "^11.5.1",
     "express": "^4.16.2",
-    "firebase-admin": "^7.2.0",
+    "firebase-admin": "^11.9.0",
     "flat-map": "^1.0.0",
     "gulp-add-src": "^1.0.0",
     "gulp-append-prepend": "^1.0.6",
